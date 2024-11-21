@@ -86,9 +86,9 @@ cal_minus_set <- function(net) {
 }
 
 # run the function
-minus_set_list <- cal_minus_set(pgg_data)
+pgg_minus_data <- cal_minus_set(pgg_data)
 
-minus_set_adj <- lapply(minus_set_list, function(sublist) {
+pgg_minus_adj <- lapply(pgg_minus_data, function(sublist) {
   
   lapply(sublist, function(subsublist) {
     
@@ -100,5 +100,5 @@ minus_set_adj <- lapply(minus_set_list, function(sublist) {
 
 
 # save the data
-save(minus_set_list, file = "data/pgg_minus_data.RData")
-save(minus_set_adj, file = "data/pgg_minus_adj.RData")
+save(pgg_minus_data, file = "data/pgg_minus_data.RData")
+save(pgg_minus_adj, file = "data/pgg_minus_adj.RData")
