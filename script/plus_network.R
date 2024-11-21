@@ -52,7 +52,7 @@ cal_plus_graphs <- function(net) {
 # calculate the plus graphs in the dynamic network
 cal_plus_dynamic <- function(nets) {
   
-  timestep <- length(nets)
+  time_step <- length(nets) - 1
   plus_dynamic_list <- list()
   
   for (t in 1:time_step) {
@@ -86,5 +86,18 @@ cal_plus_set <- function(net) {
 # run the function
 plus_set_list <- cal_plus_set(pgg_data)
 
+
+plus_set_adj <- lapply(plus_set_list, function(sublist) {
+  
+  lapply(sublist, function(subsublist) {
+    
+    lapply(subsublist, function(graph) {
+      igraph::as_adjacency_matrix(graph, sparse = FALSE)})
+    })
+  
+  })
+
+
 # save the data
 save(plus_set_list, file = "data/pgg_plus_data.RData")
+save(plus_set_adj, file = "data/pgg_plus_adj.RData")
