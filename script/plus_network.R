@@ -1,6 +1,8 @@
 # read the libraries 
 library(igraph)
 
+setwd("~/Desktop/stergm-small-multiple-networks/")
+
 # load the data: pgg_data
 load("data/pgg_data.RData")
 
