@@ -84,10 +84,10 @@ cal_plus_set <- function(net) {
 }
 
 # run the function
-plus_set_list <- cal_plus_set(pgg_data)
+pgg_plus_data <- cal_plus_set(pgg_data)
 
 
-plus_set_adj <- lapply(plus_set_list, function(sublist) {
+pgg_plus_adj <- lapply(pgg_plus_data, function(sublist) {
   
   lapply(sublist, function(subsublist) {
     
@@ -99,5 +99,5 @@ plus_set_adj <- lapply(plus_set_list, function(sublist) {
 
 
 # save the data
-save(plus_set_list, file = "data/pgg_plus_data.RData")
-save(plus_set_adj, file = "data/pgg_plus_adj.RData")
+save(pgg_plus_data, file = "data/pgg_plus_data.RData")
+save(pgg_plus_adj, file = "data/pgg_plus_adj.RData")
