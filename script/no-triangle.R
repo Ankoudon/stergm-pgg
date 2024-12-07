@@ -175,11 +175,11 @@ result <- optim(par = c(0, 0, 0, 0, 0, 0, 0, 0),
 
 estimated_params <- result$par
 maximum_log_likelihood <- - result$value
-cov_matrix <- solve(result$hessian)
-standard_errors <- sqrt(diag(cov_matrix))
+#cov_matrix <- solve(result$hessian)
+#standard_errors <- sqrt(diag(cov_matrix))
 
 model_data <- tibble(estimate = estimated_params,
-                     se = standard_errors,
+                     #se = standard_errors,
                      maximum_log_likelihood = maximum_log_likelihood)
 
 write_csv(model_data, "result/model-dev.csv")

@@ -352,44 +352,74 @@ display: none;
 </div>
 
 
-<div id="inference-in-multiple-small-dynamic-networks" class="section level1">
-<h1>“Inference in Multiple Small Dynamic Networks”</h1>
-<p>Hiroyasu Ando and Mark S. Handcock. (2025).</p>
-<div id="step-1-data-preparation" class="section level3">
-<h3>Step (1) Data Preparation</h3>
-<div id="data-1" class="section level5">
-<h5>Data 1</h5>
-<ul>
-<li><p>pgg_data: Data collected from Public Goods Game. Each network is
-a igraph object.</p></li>
-<li><p>pgg_adj: Adjacency matrices of “pgg_data”.</p></li>
-</ul>
+<div id="statistical-modeling-of-networked-evolutionary-public-goods-games" class="section level1">
+<h1>Statistical Modeling of Networked Evolutionary Public Goods
+Games</h1>
+<div id="hiroyasu-ando-and-mark-s.-handcock." class="section level3">
+<h3>Hiroyasu Ando and Mark S. Handcock.</h3>
 </div>
-<div id="data-2" class="section level5">
-<h5>Data 2</h5>
-<ul>
-<li><p>pgg_plus_data: Formation network data collected from Public Goods
-Game. Each network is a igraph object. You can also make this by
-“plus_network.R”.</p></li>
-<li><p>pgg_plus_adj: Adjacency matrices of “pgg_plus_data”. You can also
-make this by “plus_network.R”.</p></li>
-</ul>
+<div id="data" class="section level3">
+<h3>1. Data</h3>
+<p><strong>- pgg_data.RData:</strong></p>
+<p>A collection of 20 independent dynamic networks from the public goods
+game, where each network has 8 time points and is represented as an
+igraph object.</p>
+<p><strong>- pgg_adj.RData:</strong></p>
+<p>A collection of 20 independent dynamic networks from the public goods
+game, where each network has 8 time points and is represented as an
+adjacency matrix.</p>
+<p><strong>- pgg_plus_data.Rdata</strong></p>
+<p>All possible <span class="math inline">\(Y^+\)</span> network data
+for each network from the time 1 to 7, structured identically to
+“pgg_data.RData”. Each element in the list is an igraph object. This
+list can also be generated using the “plus_network.R” script.</p>
+<p><strong>- pgg_plus_adj.Rdata</strong></p>
+<p>All possible <span class="math inline">\(Y^+\)</span> network data
+for each network from the time 1 to 7, structured identically to
+“pgg_data.RData”. Each element in the list is an adjacency matrix. This
+list can also be generated using the “plus_network.R” script.</p>
+<p><strong>- pgg_minus_data.Rdata</strong></p>
+<p>All possible <span class="math inline">\(Y^-\)</span> network data
+for each network from the time 1 to 7, structured identically to
+“pgg_data.RData”. Each element in the list is an igraph object. This
+list can also be generated using the “minus_network.R” script.</p>
+<p><strong>- pgg_minus_adj.Rdata</strong></p>
+<p>All possible <span class="math inline">\(Y^-\)</span> network data
+for each network from the time 1 to 7, structured identically to
+“pgg_data.RData”. Each element in the list is an adjacency matrix. This
+list can also be generated using the “minus_network.R” script.</p>
 </div>
-<div id="data-3" class="section level5">
-<h5>Data 3</h5>
-<ul>
-<li><p>pgg_minus_data: Persistence network data collected from Public
-Goods Game. Each network is a igraph object. You can also make this by
-“minus_network.R”.</p></li>
-<li><p>pgg_minus_adj: Adjacency matrices of “pgg_minus_data”. You can
-also make this by “minus_network.R”.</p></li>
-</ul>
-</div>
-</div>
-<div id="step-2-model-fitting" class="section level3">
-<h3>Step (2) Model Fitting</h3>
-<p>Run “main.py”. This script will generate the results of the paper.
-Note that this script will take a long time, for an hour or more.</p>
+<div id="scripts" class="section level3">
+<h3>2. Scripts</h3>
+<p><strong>- plus_network.R</strong></p>
+<p>This script generates all possible <span class="math inline">\(Y^+\)</span> network data for each network. The
+output files are saved as “pgg_plus_data.RData” and
+“pgg_plus_adj.RData”.</p>
+<p><strong>- minus_network.R</strong></p>
+<p>This script generates all possible <span class="math inline">\(Y^-\)</span> network data for each network. The
+output files are saved as “pgg_minus_data.RData” and
+“pgg_minus_adj.RData”.</p>
+<p><strong>- main.R</strong></p>
+<p>This script fits the networked evolutionary public goods game model
+to the data from the public goods game (Table 1). The outputs include
+the maximum likelihood estimates (MLE), standard errors, and the
+log-likelihood value.</p>
+<p><strong>- sensitivity.R</strong></p>
+<p>This script fits the networked evolutionary public goods game model
+to the public goods game data at each time step (Figures 5 and 6). The
+outputs include the maximum likelihood estimates (MLE), standard errors,
+and log-likelihood values.</p>
+<p><strong>- no-triangle.R</strong></p>
+<p>This script fits the networked evolutionary public goods game model
+to the public goods game data without including triangle terms (Table
+2). The outputs are the maximum likelihood estimates (MLE) and the
+log-likelihood values.</p>
+<p><strong>- graph_1.R</strong></p>
+<p>This script generates the graphs for the “sensitivity.R” analysis,
+corresponding to Figures 5 and 6.</p>
+<p><strong>- graph_2.R</strong></p>
+<p>This script illustrates the dynamics of the public goods game, as
+shown in Figure 4.</p>
 </div>
 </div>
 

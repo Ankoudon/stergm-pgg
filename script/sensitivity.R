@@ -171,7 +171,7 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
 }
 
 # Chose time step (1-7)
-time_step <- 1
+time_step <- 7
 
 result <- optim(par = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                 fn = function(eta) negative_log_likelihood (

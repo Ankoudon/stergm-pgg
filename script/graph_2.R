@@ -30,9 +30,9 @@ for (t in 1:8) {
        vertex.cex = network::get.vertex.attribute(t_object, "score")*0.01,
        vertex.col = ifelse(
          network::get.vertex.attribute(t_object, "behavior") == 1,
-         "red", ifelse(
+         "#FF6F61", ifelse(
            network::get.vertex.attribute(t_object, "behavior") == 0,
-           "blue", "gray")))
+           "#60A3D9", "gray")))
   
 }
 
