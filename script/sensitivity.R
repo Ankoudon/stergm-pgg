@@ -12,14 +12,13 @@ load("data/pgg_plus_adj.RData")
 load("data/pgg_minus_adj.RData")
 
 log_likelihood <- function(eta, net_list, adj_matrices,
-                           list_time_plus, list_time_minus) {
+                           list_time_plus, list_time_minus, time_step) {
   
   
   lambda <- eta[1:10]
   loglik <- 0
-  time_step <- length(net_list) - 1
   
-  for (t in 1:time_step) {
+  for (t in time_step:time_step) {
     
     next_behavior <- V(net_list[[t + 1]])$behavior
     next_score <- V(net_list[[t + 1]])$score / 1000
@@ -145,7 +144,7 @@ log_likelihood <- function(eta, net_list, adj_matrices,
 }
 
 negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
-                                    pgg_plus_adj, pgg_minus_adj) {
+                                    pgg_plus_adj, pgg_minus_adj, time_step) {
   
   loglike_pool <- 0
   
@@ -156,7 +155,8 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
       pgg_data[[paste0("net_", n)]],
       pgg_adj[[paste0("net_", n)]],
       pgg_plus_adj[[paste0("net_", n)]],
-      pgg_minus_adj[[paste0("net_", n)]])
+      pgg_minus_adj[[paste0("net_", n)]],
+      time_step)
     
     loglike_pool <- loglike_pool + loglike
     
@@ -170,20 +170,23 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
   
 }
 
+# Chose time step (1-7)
+time_step <- 1
+
 result <- optim(par = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
                 fn = function(eta) negative_log_likelihood (
-                  eta, pgg_data, pgg_adj, pgg_plus_adj, pgg_minus_adj), 
+                  eta, pgg_data, pgg_adj, pgg_plus_adj, pgg_minus_adj, time_step), 
                 hessian = TRUE,
                 method = "BFGS",
                 control = list(trace = 1, maxit = 100000))
 
 estimated_params <- result$par
-maximum_log_likelihood <- - result$value
 cov_matrix <- solve(result$hessian)
-standard_errors <- sqrt(diag(cov_matrix))
+standard_error <- sqrt(diag(cov_matrix))
 
 model_data <- tibble(estimate = estimated_params,
-                     se = standard_errors,
-                     maximum_log_likelihood = maximum_log_likelihood)
+                     se = standard_error)
 
-write_csv(model_data, "result/model.csv")
+write_csv(model_data, paste0("result/model_", time_step, ".csv"))
+
+

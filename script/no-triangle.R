@@ -15,7 +15,7 @@ log_likelihood <- function(eta, net_list, adj_matrices,
                            list_time_plus, list_time_minus) {
   
   
-  lambda <- eta[1:10]
+  lambda <- eta[1:8]
   loglik <- 0
   time_step <- length(net_list) - 1
   
@@ -44,10 +44,9 @@ log_likelihood <- function(eta, net_list, adj_matrices,
     
     plus_numerator <- exp(
       (sum(plus_adj) / 2) * lambda[1] +
-        num_triangle * lambda[2] +
-        num_coop_homo * lambda[3] +
-        num_def_homo * lambda[4] +
-        num_score * lambda[5])
+        num_coop_homo * lambda[2] +
+        num_def_homo * lambda[3] +
+        num_score * lambda[4])
     
     plus_denominator <- sum(
       unlist(mclapply(list_time_plus[[t]], function(plus_deno) {
@@ -71,10 +70,9 @@ log_likelihood <- function(eta, net_list, adj_matrices,
         
         exp(
           (sum(plus_deno_adj) / 2) * lambda[1] +
-            num_plus_deno_triangle * lambda[2] +
-            num_coop_homo_plus_deno * lambda[3] + 
-            num_def_homo_plus_deno * lambda[4] +
-            num_plus_deno_score * lambda[5])
+            num_coop_homo_plus_deno * lambda[2] + 
+            num_def_homo_plus_deno * lambda[3] +
+            num_plus_deno_score * lambda[4])
         
       }, mc.cores = parallel::detectCores() - 1)))
     
@@ -99,11 +97,10 @@ log_likelihood <- function(eta, net_list, adj_matrices,
     num_minus_triangle <- sum(diag(minus_adj %*% minus_adj %*% minus_adj)) / 6
     
     minus_numerator <- exp(
-      (sum(minus_adj) / 2) * lambda[6] +
-        num_minus_triangle * lambda[7] +
-        num_minus_coop_homo * lambda[8] +
-        num_minus_def_homo * lambda[9] +
-        num_minus_score * lambda[10])
+      (sum(minus_adj) / 2) * lambda[5] +
+        num_minus_coop_homo * lambda[6] +
+        num_minus_def_homo * lambda[7] +
+        num_minus_score * lambda[8])
     
     minus_denominator <- sum(
       unlist(mclapply(list_time_minus[[t]], function(minus_deno) {
@@ -126,11 +123,10 @@ log_likelihood <- function(eta, net_list, adj_matrices,
           diag(minus_deno_adj %*% minus_deno_adj %*% minus_deno_adj)) / 6
         
         exp(
-          (sum(minus_deno_adj) / 2) * lambda[6] +
-            num_minus_deno_triangle * lambda[7] +
-            num_coop_homo_minus_deno * lambda[8] +
-            num_def_homo_minus_deno * lambda[9] +
-            num_minus_deno_score * lambda[10])
+          (sum(minus_deno_adj) / 2) * lambda[5] +
+            num_coop_homo_minus_deno * lambda[6] +
+            num_def_homo_minus_deno * lambda[7] +
+            num_minus_deno_score * lambda[8])
       }, mc.cores = parallel::detectCores() - 1)))
     
     minus_prob <- minus_numerator / minus_denominator
@@ -170,10 +166,10 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
   
 }
 
-result <- optim(par = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+result <- optim(par = c(0, 0, 0, 0, 0, 0, 0, 0),
                 fn = function(eta) negative_log_likelihood (
                   eta, pgg_data, pgg_adj, pgg_plus_adj, pgg_minus_adj), 
-                hessian = TRUE,
+                #hessian = TRUE,
                 method = "BFGS",
                 control = list(trace = 1, maxit = 100000))
 
@@ -186,4 +182,4 @@ model_data <- tibble(estimate = estimated_params,
                      se = standard_errors,
                      maximum_log_likelihood = maximum_log_likelihood)
 
-write_csv(model_data, "result/model.csv")
+write_csv(model_data, "result/model-dev.csv")
