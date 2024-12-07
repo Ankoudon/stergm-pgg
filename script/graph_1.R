@@ -42,17 +42,17 @@ g_1 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-8, 3),
-                     breaks = seq(-8, 3, by = 2)) +
+  scale_y_continuous(limits = c(-13.5, 3),
+                     breaks = seq(-13.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15),
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20),
     legend.key.size = unit(1, "cm"),
-    legend.text = element_text(size = 20)) +
+    legend.text = element_text(size = 25)) +
   labs(
     x = "Time",
     y = "Edge"
@@ -69,15 +69,15 @@ g_2 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-8, 3),
-                     breaks = seq(-8, 3, by = 2)) +
+  scale_y_continuous(limits = c(-13.5, 3),
+                     breaks = seq(-13.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Triangle"
@@ -93,15 +93,15 @@ g_3 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-8, 3),
-                     breaks = seq(-8, 3, by = 2)) +
+  scale_y_continuous(limits = c(-13.5, 3),
+                     breaks = seq(-13.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Homophily-cooperation"
@@ -117,15 +117,15 @@ g_4 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-8, 3),
-                     breaks = seq(-8, 3, by = 2)) +
+  scale_y_continuous(limits = c(-13.5, 3),
+                     breaks = seq(-13.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Homophily-defection"
@@ -141,15 +141,15 @@ g_5 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-8, 3),
-                     breaks = seq(-8, 3, by = 2)) +
+  scale_y_continuous(limits = c(-13.5, 3),
+                     breaks = seq(-13.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Absolute wealth difference"
@@ -180,12 +180,12 @@ g_6 <- main |>
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15),
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20),
     legend.key.size = unit(1, "cm"),
-    legend.text = element_text(size = 20)) +
+    legend.text = element_text(size = 25)) +
   labs(
     x = "Time",
     y = "Edge"
@@ -206,10 +206,10 @@ g_7 <- main |>
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Triangle"
@@ -230,10 +230,10 @@ g_8 <- main |>
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Homophily-cooperation"
@@ -255,10 +255,10 @@ g_9 <- main |>
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Homophily-defection"
@@ -280,10 +280,10 @@ g_10 <- main |>
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
-    axis.title.x = element_text(size = 20),
-    axis.title.y = element_text(size = 20),
-    axis.text.x = element_text(size = 15),
-    axis.text.y = element_text(size = 15)) +
+    axis.title.x = element_text(size = 25),
+    axis.title.y = element_text(size = 25),
+    axis.text.x = element_text(size = 20),
+    axis.text.y = element_text(size = 20)) +
   labs(
     x = "",
     y = "Absolute wealth difference"
@@ -299,9 +299,9 @@ ggpubr::ggarrange(
   labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
   ncol = 5,
   nrow = 1,
-  font.label = list(size = 15),
   common.legend = TRUE, 
-  legend = "bottom" 
+  legend = "bottom",
+  font.label = list(size = 25)
 )
 
 ggpubr::ggarrange(
@@ -313,7 +313,7 @@ ggpubr::ggarrange(
   labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
   ncol = 5,
   nrow = 1,
-  font.label = list(size = 15),
+  font.label = list(size = 25),
   common.legend = TRUE, 
   legend = "bottom" 
 )
