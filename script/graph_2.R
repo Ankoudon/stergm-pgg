@@ -5,7 +5,7 @@ load("data/pgg_data.RData")
 
 net <- pgg_data[["net_1"]]
 
-par(mfrow = c(2, 4), oma = c(1,1,1,1), mar = c(4,2,2,2))
+par(mfrow = c(2, 4), oma = c(1,1,1,1), mar = c(2, 2, 2, 2))
 
 for (t in 1:8) {
   
@@ -25,7 +25,7 @@ for (t in 1:8) {
   plot(t_object, main = paste0("time ", t-1), 
        displaylabels = T,
        cex.main = 3,
-       label.cex = 1,
+       label.cex = 2,
        pad = 0.5,
        vertex.cex = network::get.vertex.attribute(t_object, "score")*0.01,
        vertex.col = ifelse(
