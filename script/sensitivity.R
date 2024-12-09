@@ -1,6 +1,7 @@
 # This script fits the networked evolutionary public goods game model to the
-# data from the public goods game (Table 1). The outputs include the maximum
-# likelihood estimates (MLE), standard errors, and the log-likelihood value.
+# public goods game data at each time step (Figures 5 and 6). The outputs
+# include the maximum likelihood estimates (MLE), standard errors, and
+# log-likelihood values.
 
 # Libraries 
 library(igraph)
