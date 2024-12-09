@@ -52,11 +52,11 @@ This script fits the networked evolutionary public goods game model to the publi
 
 This script fits the networked evolutionary public goods game model to the public goods game data without including triangle terms (Table 2). The outputs are the maximum likelihood estimates (MLE) and the log-likelihood values.
 
-**- graph_1.R**
+**- graph-5-6.R**
 
 This script generates the graphs for the "sensitivity.R" analysis, corresponding to Figures 5 and 6.
 
-**- graph_2.R**
+**- graph-4.R**
 
 This script illustrates the dynamics of the public goods game, as shown in Figure 4.
 
