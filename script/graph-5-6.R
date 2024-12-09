@@ -1,7 +1,10 @@
+# library
 library(tidyverse)
 
+# Change directory if necessary
 setwd("~/Desktop/stergm-small-multiple-networks/")
 
+# Set a tibble
 main <- tibble(
   estimate = numeric(),
   se = numeric(),
@@ -9,29 +12,35 @@ main <- tibble(
   param = character()
 )
 
-
+# Read all the csv files for each time step
 for (i in 1:7) {
   
+  # Read csv
   data <- read_csv(paste0("result/model_", i, ".csv"))
   
+  # Add a column for the parameter descriptions
   data <- data |> select(estimate, se) |> 
     mutate(
       time = i,
-      param = c("edge-form", "triangle-form", "coop-form", "def-form", "wealth-form",
-                "edge-per", "triangle-per", "coop-per", "def-per", "wealth-per"),
+      param = c("edge-form", "triangle-form", "coop-form", "def-form",
+                "wealth-form", "edge-per", "triangle-per", "coop-per",
+                "def-per", "wealth-per"),
     )
   
+  # Combine each tibble
   main <- bind_rows(main, data)
   
 }
 
+# Add a column for the p-value
 main <- main |>
   mutate(p = if_else(
     abs(estimate/se) > 1.96, "p-value < 0.05", "otherwise"),
     p = factor(p, levels = c("p-value < 0.05", "otherwise")),
-    time = paste0(time)
+    time = as.character(time)
   )
 
+# Graph for the edge formation
 g_1 <- main |>
   filter(param == "edge-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -59,6 +68,7 @@ g_1 <- main |>
   )
 
 
+# Graph for the triangle formation
 g_2 <- main |>
   filter(param == "triangle-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -83,6 +93,7 @@ g_2 <- main |>
     y = "Triangle"
   )
 
+# Graph for the homophily-cooperation
 g_3 <- main |>
   filter(param == "coop-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -107,6 +118,7 @@ g_3 <- main |>
     y = "Homophily-cooperation"
   )
 
+# Graph for the homophily-defection
 g_4 <- main |>
   filter(param == "def-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -131,6 +143,7 @@ g_4 <- main |>
     y = "Homophily-defection"
   )
 
+# Graph for the absolute wealth difference
 g_5 <- main |>
   filter(param == "wealth-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -155,16 +168,7 @@ g_5 <- main |>
     y = "Absolute wealth difference"
   )
 
-
-
-
-
-
-
-
-
-
-
+# Graph for the edge persistence
 g_6 <- main |>
   filter(param == "edge-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -191,6 +195,7 @@ g_6 <- main |>
     y = "Edge"
   )
 
+# Graph for the triangle persistence
 g_7 <- main |>
   filter(param == "triangle-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -215,6 +220,7 @@ g_7 <- main |>
     y = "Triangle"
   )
 
+# Graph for the homophily-cooperation persistence
 g_8 <- main |>
   filter(param == "coop-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -240,6 +246,7 @@ g_8 <- main |>
   )
 
 
+# Graph for the homophily-defection persistence
 g_9 <- main |>
   filter(param == "def-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -264,7 +271,7 @@ g_9 <- main |>
     y = "Homophily-defection"
   )
 
-
+# Graph for the absolute wealth difference persistence
 g_10 <- main |>
   filter(param == "wealth-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
@@ -289,7 +296,7 @@ g_10 <- main |>
     y = "Absolute wealth difference"
   )
 
-
+# Arrange the graphs (persistence)
 ggpubr::ggarrange(
   g_6,
   g_7,
@@ -304,6 +311,7 @@ ggpubr::ggarrange(
   font.label = list(size = 25)
 )
 
+# Arrange the graphs (formation)
 ggpubr::ggarrange(
   g_1,
   g_2,
