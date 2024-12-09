@@ -7,14 +7,7 @@ library(igraph)
 library(tidyverse)
 library(parallel)
 
-# Change the directory if necessary
-setwd("~/Desktop/stergm-small-multiple-networks/")
-
-#Load the data
-load("data/pgg_data.RData")
-load("data/pgg_adj.RData")
-load("data/pgg_plus_adj.RData")
-load("data/pgg_minus_adj.RData")
+#################### Functions ####################
 
 # A function to calculate log-likelihood for each network
 # {eta: parameter,
@@ -253,6 +246,17 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
   return(loglike_pool)
   
 }
+
+#################### Run ####################
+
+# Change the directory if necessary
+setwd("~/Desktop/stergm-small-multiple-networks/")
+
+#Load the data
+load("data/pgg_data.RData")
+load("data/pgg_adj.RData")
+load("data/pgg_plus_adj.RData")
+load("data/pgg_minus_adj.RData")
 
 # Estimate the parameters.
 # Note that this function might take more than 1.5 hours.
