@@ -1,48 +1,60 @@
-# read the libraries 
+# Library 
 library(igraph)
 
-setwd("~/Desktop/stergm-small-multiple-networks/")
+#################### Functions ####################
 
-# load the data: pgg_data
-load("data/pgg_data.RData")
-
-# calculate all the plus graphs
+# Calculate all the minus graphs from a network
+# net: an igraph object
 cal_minus_graphs <- function(net) {
   
+  # Number of nodes: 6
   node_num <- vcount(net)
   
+  # All the vertex pairs: 15 pairs
   all_vertex_pairs <- t(combn(node_num, 2))
-  
+  # Check if the vertex pairs are connected in the network, net
   bool_connected <- apply(all_vertex_pairs, 1, function(pair) {
     igraph::are.connected(net, pair[1], pair[2])})
   
+  # Extract the connected pairs
   connected_pairs <- all_vertex_pairs[bool_connected, ]
   
+  # Generate all the combinations of the connected pairs
   combinations <- expand.grid(
     rep(list(c(FALSE, TRUE)), nrow(connected_pairs)))
   
+  # A list for all the minus graphs
   minus_graphs_list <- list()
   
-  if (nrow(combinations) == 0) {
+  # If there is no connected pairs
+  if (sum(bool_connected) == 0) {
     
+    # The minus graph is the same as the input network
     minus_graphs_list[[1]] <- net
     
   } else {
     
+    # Generate all the minus graphs
     for (j in 1:nrow(combinations)) {
       
+      # Copy the input network
       temp_graph <- net
       
+      # Delete the edges based on the combinations
       for (k in 1:nrow(connected_pairs)) {
         
+        # If the combination is TRUE
         if (combinations[j, k]) {
           
+          # Get the edge id
           edge_id <- igraph::get.edge.ids(temp_graph, connected_pairs[k, ],
                                           directed = FALSE)
+          # Delete the edge
           temp_graph <- delete_edges(temp_graph, edge_id)
           
         }}
       
+      # Save the minus graph
       minus_graphs_list[[j]] <- temp_graph
       
     }
@@ -53,15 +65,22 @@ cal_minus_graphs <- function(net) {
   
 }
 
-# calculate the plus graphs in the dynamic network
+# Calculate the minus graphs in a set of dynamic networks (7)
+# nets: a set of dynamic networks
 cal_minus_dynamic <- function(nets) {
   
+  # Number of time steps -1 : 7
+  # Note that there are 8 networks in "nets", but calculate the minus graphs for 7 networks.
   time_step <- length(nets) - 1 
+  # A list for all the minus graphs
   minus_dynamic_list <- list()
   
+  # Calculate the minus graphs for each time step
   for (t in 1:time_step) {
     
+    # Calculate the minus graphs
     minus_graphs_list <- cal_minus_graphs(nets[[t]])
+    # Save the minus graphs
     minus_dynamic_list[[t]] <- minus_graphs_list
     
   }
@@ -70,15 +89,20 @@ cal_minus_dynamic <- function(nets) {
   
 }
 
-# calculate the plus graphs of all the dynamic networks
+# Calculate the minus graphs for all the 20 dynamic networks
+# net: a list of 20 dynamic networks
 cal_minus_set <- function(net) {
   
+  # A list for all the minus graphs
   minus_set_list <- list()
+  # Number of networks: 20
   network_num <- length(net)
   
   for (n in 1:network_num) {
     
+    # Calculate the minus graphs for each dynamic network
     minus_dynamic_list <- cal_minus_dynamic(net[[paste0("net_", n)]])
+    # Save the minus graphs
     minus_set_list[[paste0("net_", n)]] <- minus_dynamic_list
     
   }
@@ -87,9 +111,18 @@ cal_minus_set <- function(net) {
   
 }
 
-# run the function
+#################### Run ####################
+
+# Set the working directory
+setwd("~/Desktop/stergm-small-multiple-networks/")
+
+# load the data: pgg_data
+load("data/pgg_data.RData")
+
+# Run the function
 pgg_minus_data <- cal_minus_set(pgg_data)
 
+# Convert the minus graphs to adjacency matrices
 pgg_minus_adj <- lapply(pgg_minus_data, function(sublist) {
   
   lapply(sublist, function(subsublist) {
@@ -101,6 +134,7 @@ pgg_minus_adj <- lapply(pgg_minus_data, function(sublist) {
 })
 
 
-# save the data
+# Save the data
 save(pgg_minus_data, file = "data/pgg_minus_data.RData")
 save(pgg_minus_adj, file = "data/pgg_minus_adj.RData")
+  
