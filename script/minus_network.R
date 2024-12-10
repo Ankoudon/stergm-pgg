@@ -1,3 +1,6 @@
+# This script generates all possible Y(-) network for each network. The output
+# files are saved as "pgg_minus_data.RData" and "pgg_minus_adj.RData".
+
 # Library 
 library(igraph)
 
@@ -21,7 +24,7 @@ cal_minus_graphs <- function(net) {
   
   # Generate all the combinations of the connected pairs
   combinations <- expand.grid(
-    rep(list(c(FALSE, TRUE)), nrow(connected_pairs)))
+    rep(list(c(FALSE, TRUE)), sum(bool_connected)))
   
   # A list for all the minus graphs
   minus_graphs_list <- list()
@@ -41,13 +44,24 @@ cal_minus_graphs <- function(net) {
       temp_graph <- net
       
       # Delete the edges based on the combinations
-      for (k in 1:nrow(connected_pairs)) {
+      for (k in 1:sum(bool_connected)) {
         
         # If the combination is TRUE
         if (combinations[j, k]) {
           
+          # Define "remove_pair_vec" as the connected pairs to remove
+          if (sum(bool_connected) == 1) {
+            
+            remove_pair_vec <- connected_pairs
+            
+          } else {
+            
+            remove_pair_vec <- connected_pairs[k, ]
+            
+          }
+          
           # Get the edge id
-          edge_id <- igraph::get.edge.ids(temp_graph, connected_pairs[k, ],
+          edge_id <- igraph::get.edge.ids(temp_graph, remove_pair_vec,
                                           directed = FALSE)
           # Delete the edge
           temp_graph <- delete_edges(temp_graph, edge_id)
@@ -69,7 +83,7 @@ cal_minus_graphs <- function(net) {
 # nets: a set of dynamic networks
 cal_minus_dynamic <- function(nets) {
   
-  # Number of time steps -1 : 7
+  # Number of time steps - 1 : 7
   # Note that there are 8 networks in "nets", but calculate the minus graphs for 7 networks.
   time_step <- length(nets) - 1 
   # A list for all the minus graphs

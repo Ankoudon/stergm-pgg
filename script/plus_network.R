@@ -1,3 +1,6 @@
+# This script generates all possible Y(+) network for each network. 
+# The output files are saved as "pgg_plus_data.RData" and "pgg_plus_adj.RData".
+
 # Library
 library(igraph)
 
@@ -18,17 +21,17 @@ cal_plus_graphs <- function(net) {
       igraph::are.connected(net, pair[1], pair[2])})
   
   # Non-connected pairs
-  non_connected_pairs <- all_vertex_pairs[! bool_connected, ]
+  non_connected_pairs <- all_vertex_pairs[!bool_connected, ]
   
   # All the combinations of non-connected pairs
   combinations <- expand.grid(
-    rep(list(c(FALSE, TRUE)), nrow(non_connected_pairs)))
+    rep(list(c(FALSE, TRUE)), sum(!bool_connected)))
   
   # A list for all the plus graphs
   plus_graphs_list <- list()
   
   # If there is no non-connected pairs
-  if (nrow(combinations) == 1) {
+  if (sum(!bool_connected) == 0) {
     
     # The plus graph is the same as the input network
     graph_plus_list[[1]] <- net
@@ -42,13 +45,24 @@ cal_plus_graphs <- function(net) {
       temp_graph <- net
       
       # Delete the edges based on the combinations
-      for (k in 1:nrow(non_connected_pairs)) {
+      for (k in 1:sum(!bool_connected)) {
         
         # If the combination is TRUE
         if (combinations[j, k]) {
           
+          # Define "add_pair_vec" as the non-connected pairs to add
+          if (sum(!bool_connected) == 1) {
+            
+            add_pair_vec <- non_connected_pairs
+            
+          } else {
+            
+            add_pair_vec <- non_connected_pairs[k, ]
+            
+          }
+          
           # Add the edge
-          temp_graph <- add_edges(temp_graph, non_connected_pairs[k, ])
+          temp_graph <- add_edges(temp_graph, add_pair_vec)
           
         }}
       

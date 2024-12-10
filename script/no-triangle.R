@@ -1,6 +1,5 @@
-# This script fits the networked evolutionary public goods game model to the
-# public goods game data without including triangle terms (Table 2). The outputs
-# are the maximum likelihood estimates (MLE) and the log-likelihood values.
+# This script fits the public goods game data without including triangle terms (Table 2).
+# The outputs are the maximum likelihood estimates (MLE) and the log-likelihood values.
 
 # Libraries 
 library(igraph)

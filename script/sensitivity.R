@@ -1,6 +1,5 @@
-# This script fits the networked evolutionary public goods game model to the
-# public goods game data at each time step (Figures 5 and 6). The outputs
-# include the maximum likelihood estimates (MLE), standard errors, and
+# This script fits the public goods game data at each time step (Figures 5 and 6).
+# The outputs include the maximum likelihood estimates (MLE), standard errors, and
 # log-likelihood values.
 
 # Libraries 
