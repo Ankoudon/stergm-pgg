@@ -51,8 +51,8 @@ g_1 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-13.5, 3),
-                     breaks = seq(-13.5, 3, by = 3)) +
+  scale_y_continuous(limits = c(-5.5, 3),
+                     breaks = seq(-4.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
@@ -79,8 +79,8 @@ g_2 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-13.5, 3),
-                     breaks = seq(-13.5, 3, by = 3)) +
+  scale_y_continuous(limits = c(-5.5, 3),
+                     breaks = seq(-4.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
@@ -104,8 +104,8 @@ g_3 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-13.5, 3),
-                     breaks = seq(-13.5, 3, by = 3)) +
+  scale_y_continuous(limits = c(-5.5, 3),
+                     breaks = seq(-4.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
@@ -129,8 +129,8 @@ g_4 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-13.5, 3),
-                     breaks = seq(-13.5, 3, by = 3)) +
+  scale_y_continuous(limits = c(-5.5, 3),
+                     breaks = seq(-4.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
@@ -154,8 +154,8 @@ g_5 <- main |>
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
-  scale_y_continuous(limits = c(-13.5, 3),
-                     breaks = seq(-13.5, 3, by = 3)) +
+  scale_y_continuous(limits = c(-5.5, 3),
+                     breaks = seq(-4.5, 3, by = 3)) +
   theme(
     axis.line = element_line(colour = "black"),
     panel.background = element_blank(),
@@ -303,7 +303,6 @@ ggpubr::ggarrange(
   g_8,
   g_9,
   g_10,
-  labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
   ncol = 5,
   nrow = 1,
   common.legend = TRUE, 
@@ -318,7 +317,6 @@ ggpubr::ggarrange(
   g_3,
   g_4,
   g_5,
-  labels = c("(a)", "(b)", "(c)", "(d)", "(e)"),
   ncol = 5,
   nrow = 1,
   font.label = list(size = 25),
