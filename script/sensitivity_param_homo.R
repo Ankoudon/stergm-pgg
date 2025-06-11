@@ -248,7 +248,7 @@ negative_log_likelihood <- function(eta, pgg_data, pgg_adj,
 #################### Run ####################
 
 # Change the directory if necessary
-setwd("~/Desktop/stergm-small-multiple-networks/")
+setwd("~/Desktop/pgg_stergm/")
 
 #Load the data
 load("data/pgg_data.RData")
@@ -279,6 +279,6 @@ standard_error <- sqrt(diag(cov_matrix))
 model_data <- tibble(estimate = estimated_params,
                      se = standard_error)
 # Save the results
-write_csv(model_data, paste0("result/test_model_", time_step, ".csv"))
+write_csv(model_data, paste0("result/model_", time_step, ".csv"))
 
 
