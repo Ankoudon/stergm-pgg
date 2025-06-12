@@ -217,7 +217,7 @@ gof_triangle <- ggplot() +
     group = 1, color = "red", size = 3) +
   geom_line(
     data = triangle_obs_tibble, aes(x = factor(time), y = value),
-    group = 1, color = "red", size = 1) +
+    group = 1, color = "red", linewidth = 1) +
   labs(x = "Time step",
        y = "Frequency per participant") +
   scale_y_continuous(breaks = seq(0, 1, by = 0.2)) +
