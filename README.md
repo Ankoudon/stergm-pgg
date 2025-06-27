@@ -1,61 +1,167 @@
-# Statistical Modeling of Networked Evolutionary Public Goods Games
+# 📊 Statistical Modeling of Networked Evolutionary Public Goods Games
 
-### Hiroyasu Ando and Mark S. Handcock. 
+**Ando H., A. Nishi, and M. S. Handcock**
 
-### 1. Data
+This repository provides all data and scripts used in the statistical analysis of dynamic network structures arising from repeated networked public goods games. It contains 20 independent longitudinal networks across eight time points, along with complete tools for conducting maximum likelihood estimation (MLE), robustness and sensitivity analyses, and goodness-of-fit evaluations. The repository enables full replication of the modeling framework and empirical results presented in the study. 
 
-**- pgg_data.RData:** 
+------------------------------------------------------------------------
 
-A collection of 20 independent dynamic networks from the public goods game, where each network has 8 time points and is represented as an igraph object.
+## 📁 Data
 
-**- pgg_adj.RData:**
+### `pgg_data.RData`
 
-A collection of 20 independent dynamic networks from the public goods game, where each network has 8 time points and is represented as an adjacency matrix.
+-   A collection of 20 independent dynamic networks from the networked
+    public goods game.
+-   Each network spans 8 time points (0 to 7).
+-   Stored as `igraph` objects.
 
-**- pgg_plus_data.Rdata**
+### `pgg_adj.RData`
 
-All possible $Y^+$ network data for each network from the time 1 to 7, structured identically to "pgg_data.RData". Each element in the list is an igraph object. This list can also be generated using the "plus_network.R" script.
+-   The same networks as above, represented as adjacency matrices.
 
-**- pgg_plus_adj.Rdata**
+### `pgg_plus_data.RData` / `pgg_plus_adj.RData`
 
-All possible $Y^+$ network data for each network from the time 1 to 7, structured identically to "pgg_data.RData". Each element in the list is an adjacency matrix. This list can also be generated using the "plus_network.R" script.
+-   All possible `Y⁺` (formation) network data for each
+    network from time 1 to 7.
+-   `igraph` objects (`pgg_plus_data.RData`) and adjacency matrices
+    (`pgg_plus_adj.RData`).
+-   Can be regenerated using the [`plus_network.R`](#scripts) script.
 
+### `pgg_minus_data.RData` / `pgg_minus_adj.RData`
 
-**- pgg_minus_data.Rdata**
+-   All possible `Y⁻` (persistence) network data for
+    each network from time 1 to 7.
+-   `igraph` objects (`pgg_minus_data.RData`) and adjacency matrices
+    (`pgg_minus_adj.RData`).
+-   Can be regenerated using the [`minus_network.R`](#scripts) script.
 
-All possible $Y^-$ network data for each network from the time 1 to 7, structured identically to "pgg_data.RData". Each element in the list is an igraph object. This list can also be generated using the "minus_network.R" script.
+------------------------------------------------------------------------
 
+## 📜 Scripts {#scripts}
 
-**- pgg_minus_adj.Rdata** 
+### `plus_network.R`
 
-All possible $Y^-$ network data for each network from the time 1 to 7, structured identically to "pgg_data.RData". Each element in the list is an adjacency matrix. This list can also be generated using the "minus_network.R" script.
+Generates all possible `Y⁺` (formation) networks.\
 
-### 2. Scripts
+**Outputs:**  
 
-**- plus_network.R**
+- `pgg_plus_data.RData` \
+- `pgg_plus_adj.RData`
 
-This script generates all possible $Y^+$ network for each network. The output files are saved as "pgg_plus_data.RData" and "pgg_plus_adj.RData".
+------------------------------------------------------------------------
 
-**- minus_network.R**
+### `minus_network.R`
 
-This script generates all possible $Y^-$ network for each network. The output files are saved as "pgg_minus_data.RData" and "pgg_minus_adj.RData".
+Generates all possible `Y⁻` (persistence) networks.\
 
-**- main.R**
+**Outputs:**  
 
-This script fits the public goods game (Table 1). The outputs include the maximum likelihood estimates (MLE), standard errors, and the log-likelihood value.
+- `pgg_minus_data.RData` \
+- `pgg_minus_adj.RData`
 
-**- sensitivity.R**
+------------------------------------------------------------------------
 
-This script fits the public goods game data at each time step (Figures 5 and 6). The outputs include the maximum likelihood estimates (MLE), standard errors, and log-likelihood values.
+### `plus_model.R` / `minus_model.R`  
+Main model for **Table 1**. 
 
-**- no-triangle.R**
+**Outputs:**  
 
-This script fits the public goods game data without including triangle terms (Table 2). The outputs are the maximum likelihood estimates (MLE) and the log-likelihood values.
+- Maximum likelihood estimates (MLE)  
+- Standard errors  
+- Log-likelihood  
 
-**- graph-5-6.R**
+------------------------------------------------------------------------
 
-This script generates the graphs for the "sensitivity.R" analysis, corresponding to Figures 5 and 6.
+### `plus_model_non_triangle.R` / `minus_model_non_triangle.R`  
+Covariates-only model (without the triangle term) used for **Table 2** and **Figure 5**.  
 
-**- graph-4.R**
+**Outputs:**  
 
-This script illustrates the dynamics of the public goods game, as shown in Figure 4.
+- Maximum likelihood estimates (MLE)  
+- Log-likelihood  
+
+------------------------------------------------------------------------
+
+### `plus_model_gender.R` / `minus_model_gender.R`  
+Main model with the gender covariates for the sensitivity analysis.  
+
+**Outputs:**  
+
+- Maximum likelihood estimates (MLE)  
+- Standard errors  
+- Log-likelihood  
+
+------------------------------------------------------------------------
+
+### `plus_model_2_star.R` / `minus_model_2_star.R`  
+Main model with an added 2-star term for the sensitivity analysis.  
+
+**Outputs:**  
+
+- Maximum likelihood estimates (MLE)  
+- Standard errors  
+- Log-likelihood  
+
+------------------------------------------------------------------------
+
+### `model_each_time.R`  
+Models at each time step, used for **Figures 7 & 8**.  
+
+**Outputs:**  
+
+- Maximum likelihood estimates (MLE)  
+- Log-likelihood  
+
+------------------------------------------------------------------------
+
+### `graph_model_each_time.R`  
+Generates visualizations of time-specific model results, used for **Figure 7** and **Figure 8**. 
+
+------------------------------------------------------------------------
+
+### `graph_dynamic_network.R`  
+Visualizes the dynamic evolution of the network over time, used for **Figure 4**.  
+
+------------------------------------------------------------------------
+
+### `gof_triangle_formation.R`  
+Generates triangle GoF plots for the formation networks, used for **Figure 5**.  
+
+------------------------------------------------------------------------
+
+### `gof_k_star.R`  
+Generates k-stars GoF plots for the public goods game networks, used for **Figure 6**. 
+
+------------------------------------------------------------------------
+
+### `gof_degree.R`  
+Produces k-degrees GoF plots for the public goods game networks.
+
+------------------------------------------------------------------------
+
+## 📦 Requirements
+
+-   R (≥ 4.0.0)
+-   `igraph`
+-   `tidyverse`
+-   `Matrix`
+-   `parallel`
+
+------------------------------------------------------------------------
+
+## 📄 Citation
+
+If you use this code or data, please cite the original paper: 
+
+**Ando, H., Nishi, A., & Handcock, M. S. (2025). Statistical Modeling of Networked Evolutionary Public Goods Games.**
+
+-----------------------------------------------------------------------
+
+## 📬 Contact
+
+For questions or collaborations, please reach out to:
+
+**Hiroyasu Ando**  
+📧 hiro1999@g.ucla.edu
+
+-----------------------------------------------------------------------

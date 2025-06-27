@@ -353,73 +353,208 @@ display: none;
 
 
 <div id="statistical-modeling-of-networked-evolutionary-public-goods-games" class="section level1">
-<h1>Statistical Modeling of Networked Evolutionary Public Goods
+<h1>📊 Statistical Modeling of Networked Evolutionary Public Goods
 Games</h1>
-<div id="hiroyasu-ando-and-mark-s.-handcock." class="section level3">
-<h3>Hiroyasu Ando and Mark S. Handcock.</h3>
+<p><strong>Ando H., A. Nishi, and M. S. Handcock</strong></p>
+<p>This repository provides all data and scripts used in the statistical
+analysis of dynamic network structures arising from repeated networked
+public goods games. It contains 20 independent longitudinal networks
+across eight time points, along with complete tools for conducting
+maximum likelihood estimation (MLE), robustness and sensitivity
+analyses, and goodness-of-fit evaluations. The repository enables full
+replication of the modeling framework and empirical results presented in
+the study.</p>
+<hr />
+<div id="data" class="section level2">
+<h2>📁 Data</h2>
+<div id="pgg_data.rdata" class="section level3">
+<h3><code>pgg_data.RData</code></h3>
+<ul>
+<li>A collection of 20 independent dynamic networks from the networked
+public goods game.</li>
+<li>Each network spans 8 time points (0 to 7).</li>
+<li>Stored as <code>igraph</code> objects.</li>
+</ul>
 </div>
-<div id="data" class="section level3">
-<h3>1. Data</h3>
-<p><strong>- pgg_data.RData:</strong></p>
-<p>A collection of 20 independent dynamic networks from the public goods
-game, where each network has 8 time points and is represented as an
-igraph object.</p>
-<p><strong>- pgg_adj.RData:</strong></p>
-<p>A collection of 20 independent dynamic networks from the public goods
-game, where each network has 8 time points and is represented as an
-adjacency matrix.</p>
-<p><strong>- pgg_plus_data.Rdata</strong></p>
-<p>All possible <span class="math inline">\(Y^+\)</span> network data
-for each network from the time 1 to 7, structured identically to
-“pgg_data.RData”. Each element in the list is an igraph object. This
-list can also be generated using the “plus_network.R” script.</p>
-<p><strong>- pgg_plus_adj.Rdata</strong></p>
-<p>All possible <span class="math inline">\(Y^+\)</span> network data
-for each network from the time 1 to 7, structured identically to
-“pgg_data.RData”. Each element in the list is an adjacency matrix. This
-list can also be generated using the “plus_network.R” script.</p>
-<p><strong>- pgg_minus_data.Rdata</strong></p>
-<p>All possible <span class="math inline">\(Y^-\)</span> network data
-for each network from the time 1 to 7, structured identically to
-“pgg_data.RData”. Each element in the list is an igraph object. This
-list can also be generated using the “minus_network.R” script.</p>
-<p><strong>- pgg_minus_adj.Rdata</strong></p>
-<p>All possible <span class="math inline">\(Y^-\)</span> network data
-for each network from the time 1 to 7, structured identically to
-“pgg_data.RData”. Each element in the list is an adjacency matrix. This
-list can also be generated using the “minus_network.R” script.</p>
+<div id="pgg_adj.rdata" class="section level3">
+<h3><code>pgg_adj.RData</code></h3>
+<ul>
+<li>The same networks as above, represented as adjacency matrices.</li>
+</ul>
 </div>
-<div id="scripts" class="section level3">
-<h3>2. Scripts</h3>
-<p><strong>- plus_network.R</strong></p>
-<p>This script generates all possible <span class="math inline">\(Y^+\)</span> network data for each network. The
-output files are saved as “pgg_plus_data.RData” and
-“pgg_plus_adj.RData”.</p>
-<p><strong>- minus_network.R</strong></p>
-<p>This script generates all possible <span class="math inline">\(Y^-\)</span> network data for each network. The
-output files are saved as “pgg_minus_data.RData” and
-“pgg_minus_adj.RData”.</p>
-<p><strong>- main.R</strong></p>
-<p>This script fits the networked evolutionary public goods game model
-to the data from the public goods game (Table 1). The outputs include
-the maximum likelihood estimates (MLE), standard errors, and the
-log-likelihood value.</p>
-<p><strong>- sensitivity.R</strong></p>
-<p>This script fits the networked evolutionary public goods game model
-to the public goods game data at each time step (Figures 5 and 6). The
-outputs include the maximum likelihood estimates (MLE), standard errors,
-and log-likelihood values.</p>
-<p><strong>- no-triangle.R</strong></p>
-<p>This script fits the networked evolutionary public goods game model
-to the public goods game data without including triangle terms (Table
-2). The outputs are the maximum likelihood estimates (MLE) and the
-log-likelihood values.</p>
-<p><strong>- graph_1.R</strong></p>
-<p>This script generates the graphs for the “sensitivity.R” analysis,
-corresponding to Figures 5 and 6.</p>
-<p><strong>- graph_2.R</strong></p>
-<p>This script illustrates the dynamics of the public goods game, as
-shown in Figure 4.</p>
+<div id="pgg_plus_data.rdata-pgg_plus_adj.rdata" class="section level3">
+<h3><code>pgg_plus_data.RData</code> /
+<code>pgg_plus_adj.RData</code></h3>
+<ul>
+<li>All possible <code>Y⁺</code> (formation) network data for each
+network from time 1 to 7.</li>
+<li><code>igraph</code> objects (<code>pgg_plus_data.RData</code>) and
+adjacency matrices (<code>pgg_plus_adj.RData</code>).</li>
+<li>Can be regenerated using the <a href="#scripts"><code>plus_network.R</code></a> script.</li>
+</ul>
+</div>
+<div id="pgg_minus_data.rdata-pgg_minus_adj.rdata" class="section level3">
+<h3><code>pgg_minus_data.RData</code> /
+<code>pgg_minus_adj.RData</code></h3>
+<ul>
+<li>All possible <code>Y⁻</code> (persistence) network data for each
+network from time 1 to 7.</li>
+<li><code>igraph</code> objects (<code>pgg_minus_data.RData</code>) and
+adjacency matrices (<code>pgg_minus_adj.RData</code>).</li>
+<li>Can be regenerated using the <a href="#scripts"><code>minus_network.R</code></a> script.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="scripts" class="section level2">
+<h2>📜 Scripts</h2>
+<div id="plus_network.r" class="section level3">
+<h3><code>plus_network.R</code></h3>
+<p>Generates all possible <code>Y⁺</code> (formation) networks.<br />
+</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li><code>pgg_plus_data.RData</code><br />
+</li>
+<li><code>pgg_plus_adj.RData</code></li>
+</ul>
+<hr />
+</div>
+<div id="minus_network.r" class="section level3">
+<h3><code>minus_network.R</code></h3>
+<p>Generates all possible <code>Y⁻</code> (persistence) networks.<br />
+</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li><code>pgg_minus_data.RData</code><br />
+</li>
+<li><code>pgg_minus_adj.RData</code></li>
+</ul>
+<hr />
+</div>
+<div id="plus_model.r-minus_model.r" class="section level3">
+<h3><code>plus_model.R</code> / <code>minus_model.R</code></h3>
+<p>Main model for <strong>Table 1</strong>.</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li>Maximum likelihood estimates (MLE)<br />
+</li>
+<li>Standard errors<br />
+</li>
+<li>Log-likelihood</li>
+</ul>
+<hr />
+</div>
+<div id="plus_model_non_triangle.r-minus_model_non_triangle.r" class="section level3">
+<h3><code>plus_model_non_triangle.R</code> /
+<code>minus_model_non_triangle.R</code></h3>
+<p>Covariates-only model (without the triangle term) used for
+<strong>Table 2</strong> and <strong>Figure 5</strong>.</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li>Maximum likelihood estimates (MLE)<br />
+</li>
+<li>Log-likelihood</li>
+</ul>
+<hr />
+</div>
+<div id="plus_model_gender.r-minus_model_gender.r" class="section level3">
+<h3><code>plus_model_gender.R</code> /
+<code>minus_model_gender.R</code></h3>
+<p>Main model with the gender covariates for the sensitivity
+analysis.</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li>Maximum likelihood estimates (MLE)<br />
+</li>
+<li>Standard errors<br />
+</li>
+<li>Log-likelihood</li>
+</ul>
+<hr />
+</div>
+<div id="plus_model_2_star.r-minus_model_2_star.r" class="section level3">
+<h3><code>plus_model_2_star.R</code> /
+<code>minus_model_2_star.R</code></h3>
+<p>Main model with an added 2-star term for the sensitivity
+analysis.</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li>Maximum likelihood estimates (MLE)<br />
+</li>
+<li>Standard errors<br />
+</li>
+<li>Log-likelihood</li>
+</ul>
+<hr />
+</div>
+<div id="model_each_time.r" class="section level3">
+<h3><code>model_each_time.R</code></h3>
+<p>Models at each time step, used for <strong>Figures 7 &amp;
+8</strong>.</p>
+<p><strong>Outputs:</strong></p>
+<ul>
+<li>Maximum likelihood estimates (MLE)<br />
+</li>
+<li>Log-likelihood</li>
+</ul>
+<hr />
+</div>
+<div id="graph_model_each_time.r" class="section level3">
+<h3><code>graph_model_each_time.R</code></h3>
+<p>Generates visualizations of time-specific model results, used for
+<strong>Figure 7</strong> and <strong>Figure 8</strong>.</p>
+<hr />
+</div>
+<div id="graph_dynamic_network.r" class="section level3">
+<h3><code>graph_dynamic_network.R</code></h3>
+<p>Visualizes the dynamic evolution of the network over time, used for
+<strong>Figure 4</strong>.</p>
+<hr />
+</div>
+<div id="gof_triangle_formation.r" class="section level3">
+<h3><code>gof_triangle_formation.R</code></h3>
+<p>Generates triangle GoF plots for the formation networks, used for
+<strong>Figure 5</strong>.</p>
+<hr />
+</div>
+<div id="gof_k_star.r" class="section level3">
+<h3><code>gof_k_star.R</code></h3>
+<p>Generates k-stars GoF plots for the public goods game networks, used
+for <strong>Figure 6</strong>.</p>
+<hr />
+</div>
+<div id="gof_degree.r" class="section level3">
+<h3><code>gof_degree.R</code></h3>
+<p>Produces k-degrees GoF plots for the public goods game networks.</p>
+<hr />
+</div>
+</div>
+<div id="requirements" class="section level2">
+<h2>📦 Requirements</h2>
+<ul>
+<li>R (≥ 4.0.0)</li>
+<li><code>igraph</code></li>
+<li><code>tidyverse</code></li>
+<li><code>Matrix</code></li>
+<li><code>parallel</code></li>
+</ul>
+<hr />
+</div>
+<div id="citation" class="section level2">
+<h2>📄 Citation</h2>
+<p>If you use this code or data, please cite the original paper:</p>
+<p><strong>Ando, H., Nishi, A., &amp; Handcock, M. S. (2025).
+Statistical Modeling of Networked Evolutionary Public Goods
+Games.</strong></p>
+<hr />
+</div>
+<div id="contact" class="section level2">
+<h2>📬 Contact</h2>
+<p>For questions or collaborations, please reach out to:</p>
+<p><strong>Hiroyasu Ando</strong><br />
+📧 <a href="mailto:hiro1999@g.ucla.edu" class="email">hiro1999@g.ucla.edu</a></p>
+<hr />
 </div>
 </div>
 
