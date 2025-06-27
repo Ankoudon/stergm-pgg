@@ -1,6 +1,6 @@
 # 📊 Statistical Modeling of Networked Evolutionary Public Goods Games
 
-**Ando H., A. Nishi, and M. S. Handcock**
+**Ando, H., Nishi, A., & Handcock, M. S.**
 
 This repository provides all data and scripts used in the statistical analysis of dynamic network structures arising from repeated networked public goods games. It contains 20 independent longitudinal networks across eight time points, along with complete tools for conducting maximum likelihood estimation (MLE), robustness and sensitivity analyses, and goodness-of-fit evaluations. The repository enables full replication of the modeling framework and empirical results presented in the study. 
 
@@ -37,7 +37,7 @@ This repository provides all data and scripts used in the statistical analysis o
 
 ------------------------------------------------------------------------
 
-## 📜 Scripts {#scripts}
+## 📜 Scripts
 
 ### `plus_network.R`
 
