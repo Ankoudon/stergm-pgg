@@ -41,7 +41,7 @@ This repository provides all data and scripts used in the statistical analysis o
 
 ### `plus_network.R`
 
-Generates all possible `Y⁺` (formation) networks.\
+Generates all possible `Y⁺` (formation) networks.
 
 **Outputs:**  
 
@@ -52,7 +52,7 @@ Generates all possible `Y⁺` (formation) networks.\
 
 ### `minus_network.R`
 
-Generates all possible `Y⁻` (persistence) networks.\
+Generates all possible `Y⁻` (persistence) networks.
 
 **Outputs:**  
 
