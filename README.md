@@ -45,7 +45,7 @@ Generates all possible `Y⁺` (formation) networks.\
 
 **Outputs:**  
 
-- `pgg_plus_data.RData` \
+- `pgg_plus_data.RData` 
 - `pgg_plus_adj.RData`
 
 ------------------------------------------------------------------------
@@ -56,7 +56,7 @@ Generates all possible `Y⁻` (persistence) networks.\
 
 **Outputs:**  
 
-- `pgg_minus_data.RData` \
+- `pgg_minus_data.RData` 
 - `pgg_minus_adj.RData`
 
 ------------------------------------------------------------------------
