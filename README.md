@@ -1,6 +1,4 @@
-# 📊 Statistical Modeling of Networked Evolutionary Public Goods Games
-
-**Ando, H., Nishi, A., & Handcock, M. S.**
+# 📊 Ando, H., Nishi, A., & Handcock, M. S. (2025). Statistical Modeling of Networked Evolutionary Public Goods Games
 
 <img src="result/featured.jpg" align="left" width="500" height="250" alt="PGG networks"/>
 
