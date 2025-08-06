@@ -1,3 +1,4 @@
+<img src="result/featured.jpg" align="left" width="250" height="250" alt="PGG networks"/>
 # 📊 Statistical Modeling of Networked Evolutionary Public Goods Games
 
 **Ando, H., Nishi, A., & Handcock, M. S.**
