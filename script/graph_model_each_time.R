@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Change directory if necessary
-setwd("~/Desktop/research/stergm-pgg/")
+setwd("~/Desktop/pgg_stergm/")
 
 # Set a tibble
 main <- tibble(

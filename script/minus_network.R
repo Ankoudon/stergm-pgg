@@ -127,8 +127,8 @@ cal_minus_set <- function(net) {
 
 #################### Run ####################
 
-# Set the working directory
-setwd("~/Desktop/stergm-small-multiple-networks/")
+# Change a directory if necessary
+setwd("~/Desktop/pgg_stergm/")
 
 # load the data: pgg_data
 load("data/pgg_data.RData")

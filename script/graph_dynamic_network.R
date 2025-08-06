@@ -2,6 +2,9 @@
 library(igraph)
 library(network)
 
+# Change a directory if necessary
+setwd("~/Desktop/pgg_stergm/")
+
 # Read the data
 load("data/pgg_data.RData")
 
