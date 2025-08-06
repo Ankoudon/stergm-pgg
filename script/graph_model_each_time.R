@@ -2,7 +2,7 @@
 library(tidyverse)
 
 # Change directory if necessary
-setwd("~/Desktop/stergm-small-multiple-networks/")
+setwd("~/Desktop/research/stergm-pgg/")
 
 # Set a tibble
 main <- tibble(
@@ -45,8 +45,8 @@ g_1 <- main |>
   filter(param == "edge-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#32CD32",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -73,8 +73,8 @@ g_2 <- main |>
   filter(param == "triangle-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#32CD32",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -98,8 +98,8 @@ g_3 <- main |>
   filter(param == "coop-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#32CD32",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -123,8 +123,8 @@ g_4 <- main |>
   filter(param == "def-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#32CD32",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -148,8 +148,8 @@ g_5 <- main |>
   filter(param == "wealth-form") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#32CD32",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -173,8 +173,8 @@ g_6 <- main |>
   filter(param == "edge-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#99CCFF",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -200,9 +200,9 @@ g_7 <- main |>
   filter(param == "triangle-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#99CCFF",
-               "otherwise" = "black"),
-    name = "", guide = 'none') +
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
+    name = "") +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
   theme_minimal() +
@@ -225,8 +225,8 @@ g_8 <- main |>
   filter(param == "coop-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#99CCFF",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "", guide = 'none') +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -251,8 +251,8 @@ g_9 <- main |>
   filter(param == "def-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#99CCFF",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "", guide = 'none') +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -276,8 +276,8 @@ g_10 <- main |>
   filter(param == "wealth-per") |>
   ggplot(aes(x = time, y = estimate, color = p)) +
   scale_color_manual(
-    values = c("p-value < 0.05" = "#99CCFF",
-               "otherwise" = "black"),
+    values = c("p-value < 0.05" = "black",
+               "otherwise" = "gray"),
     name = "", guide = 'none') +
   geom_point(size = 4) +
   geom_hline(yintercept = 0, color = "red", linewidth = 0.5) +
@@ -296,7 +296,7 @@ g_10 <- main |>
     y = "Absolute wealth difference"
   )
 
-# Arrange the graphs (persistence)
+# Arrange the graphs (persistence), 13 by 6
 ggpubr::ggarrange(
   g_6,
   g_7,
@@ -310,7 +310,7 @@ ggpubr::ggarrange(
   font.label = list(size = 25)
 )
 
-# Arrange the graphs (formation)
+# Arrange the graphs (formation), 13 by 6
 ggpubr::ggarrange(
   g_1,
   g_2,
