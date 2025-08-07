@@ -150,6 +150,14 @@ triangle_simu_tibble_gen <- function(theta, pgg_data, pgg_adj, pgg_plus_adj, n) 
   
 }
 
+# Change a directory if necessary
+setwd("~/Desktop/pgg_stergm/")
+
+# Load the data
+load("data/pgg_data.RData")
+load("data/pgg_adj.RData")
+load("data/pgg_plus_adj.RData")
+
 # Create the triangle observation tibble
 triangle_obs_tibble <- tibble(
   value = c(triangle_plus_obs(1, pgg_adj) / 120,
@@ -160,14 +168,6 @@ triangle_obs_tibble <- tibble(
             triangle_plus_obs(6, pgg_adj) / 120,
             triangle_plus_obs(7, pgg_adj) / 120),
   time = c(1, 2, 3, 4, 5, 6, 7))
-
-# Change a directory if necessary
-setwd("~/Desktop/pgg_stergm/")
-
-# Load the data
-load("data/pgg_data.RData")
-load("data/pgg_adj.RData")
-load("data/pgg_plus_adj.RData")
 
 # Parameters for the simulation 
 # with the triangle term
