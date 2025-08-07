@@ -195,4 +195,4 @@ model_data <- tibble(estimate = estimated_params,
                      maximum_log_likelihood = maximum_log_likelihood)
 
 # Save the results
-write_csv(model_data, "result/minus_model.csv")
+write_csv(model_data, "Results/minus_model.csv")
