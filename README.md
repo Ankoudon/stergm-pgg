@@ -8,7 +8,7 @@ This repository provides all data and scripts used in the statistical analysis o
 
 ------------------------------------------------------------------------
 
-## 📁 Data
+## 📁 R-Data
 
 ### `pgg_data.RData`
 
