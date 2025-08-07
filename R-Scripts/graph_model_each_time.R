@@ -16,7 +16,7 @@ main <- tibble(
 for (i in 1:7) {
   
   # Read csv
-  data <- read_csv(paste0("result/model_", i, ".csv"))
+  data <- read_csv(paste0("Results/model_", i, ".csv"))
   
   # Add a column for the parameter descriptions
   data <- data |> select(estimate, se) |> 
