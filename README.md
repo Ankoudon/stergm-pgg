@@ -1,6 +1,6 @@
 # 📊 Ando, H., Nishi, A., & Handcock, M. S. (2025). Statistical Modeling of Networked Evolutionary Public Goods Games.
 
-<img src="result/featured.jpg" width="600" height="300" alt="PGG networks"/>
+<img src="Results/featured.jpg" width="600" height="300" alt="PGG networks"/>
 
 ------------------------------------------------------------------------
 
