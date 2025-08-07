@@ -279,6 +279,6 @@ standard_error <- sqrt(diag(cov_matrix))
 model_data <- tibble(estimate = estimated_params,
                      se = standard_error)
 # Save the results
-write_csv(model_data, paste0("result/model_", time_step, ".csv"))
+write_csv(model_data, paste0("Results/model_", time_step, ".csv"))
 
 
