@@ -79,7 +79,8 @@ Covariates-only model (without the triangle term) used for **Table 2** and **Fig
 
 **Outputs:**  
 
-- Maximum likelihood estimates (MLE)  
+- Maximum likelihood estimates (MLE) 
+- Standard errors  
 - Log-likelihood  
 
 ------------------------------------------------------------------------
@@ -112,6 +113,7 @@ Models at each time step, used for **Figures 7 & 8**.
 **Outputs:**  
 
 - Maximum likelihood estimates (MLE)  
+- Standard errors  
 - Log-likelihood  
 
 ------------------------------------------------------------------------
