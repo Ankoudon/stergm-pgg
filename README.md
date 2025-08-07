@@ -148,6 +148,7 @@ Produces k-degrees GoF plots for the public goods game networks.
 -   `tidyverse`
 -   `Matrix`
 -   `parallel`
+-   `latex2exp`
 
 ------------------------------------------------------------------------
 

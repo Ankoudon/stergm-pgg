@@ -2,6 +2,7 @@
 library(igraph)
 library(tidyverse)
 library(parallel)
+library(latex2exp)
 
 # Calculate the degree of participants over 20 games at a given time step (1-7)
 degree_obs <- function(time_step, adj) {
@@ -344,13 +345,14 @@ set.seed(1234)
 # Run the degree goodness-of-fit plot function
 star_gof_plot_1 <- star_gof(1, theta, pgg_data, pgg_adj,
                                 pgg_plus_adj, pgg_minus_adj, 500) +
-  labs(x = "K-star", y = "Frequency per participant") +
+  labs(x = TeX("$\\textit{k}-star$"), y = "Frequency per participant") +
   annotate("text", x = 4.5, y = 3, label = "time 1", size = 10)
 
 # Set the seed for reproducibility
 set.seed(1234)
 star_gof_plot_2 <- star_gof(2, theta, pgg_data, pgg_adj,
                                 pgg_plus_adj, pgg_minus_adj, 500) +
+  labs(x = TeX("$\\textit{k}-star$"), y = "") +
   annotate("text", x = 4.5, y = 3, label = "time 2", size = 10)
 
 # Set the seed for reproducibility
@@ -381,6 +383,7 @@ star_gof_plot_6 <- star_gof(6, theta, pgg_data, pgg_adj,
 set.seed(1234)
 star_gof_plot_7 <- star_gof(7, theta, pgg_data, pgg_adj,
                                 pgg_plus_adj, pgg_minus_adj, 500) +
+  labs(x = TeX("$\\textit{k}-star$"), y = "") +
   annotate("text", x = 4.5, y = 3, label = "time 7", size = 10)
 
 # Save the plot (20 by 10)
