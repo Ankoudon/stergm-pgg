@@ -224,4 +224,4 @@ model_data <- tibble(estimate = estimated_params,
                      maximum_log_likelihood = maximum_log_likelihood)
 
 # Save the results
-write_csv(model_data, "result/plus_model_gender.csv")
+write_csv(model_data, "Results/plus_model_gender.csv")
