@@ -39,7 +39,7 @@ This repository provides all data and scripts used in the statistical analysis o
 
 ------------------------------------------------------------------------
 
-## 📜 Scripts
+## 📜 R-Scripts
 
 ### `plus_network.R`
 
